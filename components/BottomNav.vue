@@ -28,9 +28,9 @@ export default {
     return {
       menus: [
         {
-          label: 'Home',
-          path: '/home',
-          name: 'home',
+          label: 'Products',
+          path: '/homeproduct',
+          name: 'homeproduct',
           icon: 'home-outline',
           iconFill: 'home'
         },
