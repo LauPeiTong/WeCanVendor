@@ -23,17 +23,31 @@
             height="135"
           )
           v-row
-            v-col(:cols="5")
-              v-img.rounded-lg.ma-3(:src="require(`../../assets/food/${item.src.toLowerCase()}.jpg`)" width="110" height="110")
+            v-col.pr-0(:cols="5")
+              v-img.rounded-lg.ma-2(:src="require(`../../assets/food/${item.src.toLowerCase()}.jpg`)" width="110" height="110")
                 v-chip.ma-1.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary") {{item.discount * 100}}%
-            v-col.py-2.pl-0.d-flex.flex-column(:cols="4")
-              p.secondary--text.font-weight-medium.mb-0.pt-4 {{$strLimit(item.name, 16)}}
-              p.caption.darkGrey--text.font-weight-light.mb-0 {{item.quantity}}
-              p.caption.darkGrey--text.font-weight-light.mb-0 Stock: {{item.stockLeft}}
-              p.caption.darkGrey--text.font-weight-light.mb-0
-                del dd
+            v-col.py-2.d-flex.flex-column.px-0(:cols="5")
+              p.secondary--text.font-weight-medium.mb-0.pt-4 {{item.name}}
+              p.caption.darkGrey--text.font-weight-light.mb-0 {{item.originalPrice}}
+              v-row.d-flex.flex-row.mb-4.pl-2
+                  v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary") {{item.stockLeft}}
+            v-col.pl-0.py-2(:cols="3")
+              p.primary--text.font-weight-medium.pt-4.pr-2 {{$formatCurrency(item.originalPrice)}}
+          //- v-row
+          //-   v-col(:cols="5")
+          //-     v-img.rounded-lg.ma-3(:src="require(`../../assets/food/${item.src.toLowerCase()}.jpg`)" width="110" height="110")
+          //-       v-chip.ma-1.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary") {{item.discount * 100}}%
+          //-   //- v-col.py-2.pl-0.d-flex.flex-column(:cols="4")
+          //-   v-col.py-2.pl-0.d-flex.flex-column(:cols="6")
+          //-     v-row
+          //-       p.secondary--text.font-weight-medium.mb-0.pt-4 {{$strLimit(item.name, 16)}}
+          //-         p.secondary--text.font-weight-medium.pt-4 {{item.originalPrice}}
+          //-     p.caption.darkGrey--text.font-weight-light.mb-0 {{item.quantity}}
+          //-     p.caption.darkGrey--text.font-weight-light.mb-0 Stock: {{item.stockLeft}}
+          //-     p.caption.darkGrey--text.font-weight-light.mb-0
+          //-       del dd
 
-              p.caption.darkGrey--text.font-weight-light.mb-0 Expired Date: {{item.expiredDate}}
+          //-     p.caption.darkGrey--text.font-weight-light.mb-0 Expired Date: {{item.expiredDate}}
 
 </template>
 
