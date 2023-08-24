@@ -23,16 +23,21 @@
             height="135"
           )
           v-row
-            v-col.pr-0(:cols="5")
-              v-img.rounded-lg.ma-2(:src="require(`../../assets/food/${item.src.toLowerCase()}.jpg`)" width="110" height="110")
+            v-col.pr-0(:cols="4")
+              v-img.rounded-lg.ma-2(:src="require(`../../assets/food/${item.src.toLowerCase()}.jpg`)" width="100" height="100")
                 v-chip.ma-1.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary") {{item.discount * 100}}%
-            v-col.py-2.d-flex.flex-column.px-0(:cols="5")
+            v-col.py-2.d-flex.flex-column.px-2(:cols="5")
               p.secondary--text.font-weight-medium.mb-0.pt-4 {{item.name}}
-              p.caption.darkGrey--text.font-weight-light.mb-0 {{item.originalPrice}}
-              v-row.d-flex.flex-row.mb-4.pl-2
-                  v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary") {{item.stockLeft}}
-            v-col.pl-0.py-2(:cols="3")
-              p.primary--text.font-weight-medium.pt-4.pr-2 {{$formatCurrency(item.originalPrice)}}
+              p.caption.darkGrey--text.font-weight-light.mb-0 {{item.quantity}}
+              v-row.mb-3.py-2.px-0.pl-3
+                  p.caption.darkGrey--text.font-weight-light.mb-0  Stock: {{item.stockLeft}}
+
+              p.caption.darkGrey--text.font-weight-light Expired Date: {{item.expiredDate}}
+                  //- v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary") {{item.stockLeft}}
+            v-col.mb-3.pl-0.py-2(:cols="3")
+              p.primary--text.font-weight-medium.pt-4.pr-1 {{$formatCurrency(item.originalPrice)}}
+                //- p.primary--text.font-weight-medium.pt-4.pr-1 {{$formatCurrency(item.originalPrice)}}
+                del dd
           //- v-row
           //-   v-col(:cols="5")
           //-     v-img.rounded-lg.ma-3(:src="require(`../../assets/food/${item.src.toLowerCase()}.jpg`)" width="110" height="110")

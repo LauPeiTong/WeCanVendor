@@ -2,7 +2,7 @@
 .category-list
   v-row.pa-0.ma-0.px-4
     v-col.pa-0.ma-0
-      p.text-h6.font-weight-medium.pt-4.mb-0 Explore by category
+      p.text-h6.font-weight-medium.pt-4.mb-0 Category
     v-col.pa-0.ma-0.d-flex
 
   v-row.pl-4.mx-0.scroll-x.text-center(:style="scrollSize")
@@ -11,15 +11,16 @@
       :options="options"
     )
       template(v-slot:default="{item}")
-        .align-center
-          v-card.mx-auto.pa-4.mb-1.category-card(
-            @click=""
-            width="35"
-            elevation="0"
-            :color="$vuetify.theme.themes.light.primary"
-          )
-            v-img.category-card--img(:src="require(`../../assets/home/${item.name.toLowerCase()}.jpg`)" width="35")
-          span.black--text {{item.name}}
+          v-chip.mx-auto.mr-0.rounded-xl.px-4(outlined :color="$vuetify.theme.themes.light.primary") {{item.name}}
+      //- .align-center
+          //- v-card.mx-auto.pa-4.mb-1.category-card(
+          //-   @click=""
+          //-   width="35"
+          //-   elevation="0"
+          //-   :color="$vuetify.theme.themes.light.primary"
+          //- )
+          //-   v-img.category-card--img(:src="require(`../../assets/home/${item.name.toLowerCase()}.jpg`)" width="35")
+          //- span.black--text {{item.name}}
 
 </template>
 

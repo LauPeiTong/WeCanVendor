@@ -4,20 +4,20 @@ export const state = () => ({
   selectedFood: null,
   selectedJob: null,
   categories: [
-    { id: 1, name: 'All', new_job: 54 },
-    { id: 2, name: 'Halal', new_job: 22 },
-    { id: 3, name: 'Restaurant', new_job: 33 },
-    { id: 4, name: 'Grocery', new_job: 23 },
-    { id: 5, name: 'Supermarket', new_job: 26 },
-    { id: 6, name: 'Hotel', new_job: 16 },
-    { id: 7, name: 'Bakery', new_job: 71 }
-    // { id: 1, name: 'Vegetable', new_job: 55 },
-    // { id: 2, name: 'Fruits', new_job: 22 },
-    // { id: 3, name: 'Dairy Products', new_job: 33 },
-    // { id: 4, name: 'Bakery Items', new_job: 23 },
+    // { id: 1, name: 'All', new_job: 54 },
+    // { id: 2, name: 'Halal', new_job: 22 },
+    // { id: 3, name: 'Restaurant', new_job: 33 },
+    // { id: 4, name: 'Grocery', new_job: 23 },
     // { id: 5, name: 'Supermarket', new_job: 26 },
-    // { id: 6, name: 'Packaged food', new_job: 16 },
-    // { id: 7, name: 'Prepared and Packaged Food', new_job: 71 }
+    // { id: 6, name: 'Hotel', new_job: 16 },
+    // { id: 7, name: 'Bakery', new_job: 71 }
+    { id: 1, name: 'Vegetable', new_job: 55 },
+    { id: 2, name: 'Fruits', new_job: 22 },
+    { id: 3, name: 'Dairy Products', new_job: 33 },
+    { id: 4, name: 'Bakery Items', new_job: 23 },
+    { id: 5, name: 'Supermarket', new_job: 26 },
+    { id: 6, name: 'Packaged food', new_job: 16 },
+    { id: 7, name: 'Prepared and Packaged Food', new_job: 71 }
   ],
   shops: [
     { id: 1, name: 'MyNews', address: 'Seri Kembangan, Selangor', distance: 1.2, rate: 4.8, src: 'mynews', tags: ['Halal'], duration: 20, deliveryFee: 400 },
@@ -31,9 +31,9 @@ export const state = () => ({
   itemsvertical: [
     { id: 1, name: 'Rose Lychee Cake', discount: 0.5, originalPrice: 899, quantity: '500g', stockLeft: 10, expiredDate: '5/10/2023', src: 'roselycheecake' },
     { id: 2, name: 'Fried Chicken Rice', discount: 0.75, originalPrice: 1799, quantity: '500g', stockLeft: 5, expiredDate: '9/10/2023', src: 'friedchickenrice' },
-    { id: 3, name: 'Sandwich', discount: 0.75, originalPrice: 480, quantity: '500g', stockLeft: 10, expiredDate: '18/10/2023', src: 'sandwich' },
-    { id: 4, name: 'Udon', discount: 0.75, originalPrice: 800, quantity: '700g', stockLeft: 6, expiredDate: '15/10/2023', src: 'udon' },
-    { id: 5, name: 'Kurma Milk', discount: 0.5, originalPrice: 350, quantity: '1000ml', stockLeft: 10, expiredDate: '18/10/2023', src: 'kurmamilk' }
+    { id: 3, name: 'Sandwich', discount: 0.75, originalPrice: 480, quantity: '500g', stockLeft: 10, expiredDate: '8/11/2023', src: 'sandwich' },
+    { id: 4, name: 'Udon', discount: 0.75, originalPrice: 800, quantity: '700g', stockLeft: 6, expiredDate: '1/10/2023', src: 'udon' },
+    { id: 5, name: 'Kurma Milk', discount: 0.5, originalPrice: 350, quantity: '1000ml', stockLeft: 10, expiredDate: '2/10/2023', src: 'kurmamilk' }
   ],
   foods: [
     { id: 1, name: 'Rose Lychee Cake', shop: 3, discount: 0.5, originalPrice: 899, quantity: '1 pcs', expiredDate: 'Today, 11:00pm', src: 'roselycheecake' },
