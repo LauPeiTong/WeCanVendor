@@ -12,6 +12,7 @@
             :icon-name="'arrow-forward-outline'"
             :icon-fill="this.$vuetify.theme.themes.light.brown"
             @click=""
+            :color="color"
           )
 
   v-item-group.pt-2.pb-8
@@ -35,9 +36,13 @@
               p.caption.darkGrey--text.font-weight-light Expired Date: {{item.expiredDate}}
                   //- v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary") {{item.stockLeft}}
             v-col.mb-3.pl-0.py-2(:cols="3")
-              p.primary--text.font-weight-medium.pt-4.pr-1 {{$formatCurrency(item.originalPrice)}}
+              p.primary--text.font-weight-medium.pt-4.pr-1  {{$formatCurrency(item.originalPrice - (item.discount * 100))}}
                 //- p.primary--text.font-weight-medium.pt-4.pr-1 {{$formatCurrency(item.originalPrice)}}
-                del dd
+              v-row.pl-3
+                del.caption.darkGrey--text {{$formatCurrency(item.originalPrice)}}
+              v-row.py-0.pl-3
+                p.secondary--text.font-weight-medium.pt-8.mb-0(:color="cornerIconColor") {{item.daysLeft}}
+
           //- v-row
           //-   v-col(:cols="5")
           //-     v-img.rounded-lg.ma-3(:src="require(`../../assets/food/${item.src.toLowerCase()}.jpg`)" width="110" height="110")
@@ -77,10 +82,19 @@ export default {
     tag: {
       type: String,
       default: null
+    },
+    cornerIcon: {
+      type: String,
+      default: null
+    },
+    color: {
+      type: String,
+      default: null
     }
   },
   data () {
     return {
+      cornerIconColor: '#FEB81E'
     }
   },
   computed: {

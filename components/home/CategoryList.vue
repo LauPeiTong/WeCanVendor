@@ -2,16 +2,21 @@
 .category-list
   v-row.pa-0.ma-0.px-4
     v-col.pa-0.ma-0
-      p.text-h6.font-weight-medium.pt-4.mb-0 Category
+      p.text-h6.font-weight-medium.pt-4.mb-0.pl-4 Category
     v-col.pa-0.ma-0.d-flex
 
-  v-row.pl-4.mx-0.scroll-x.text-center(:style="scrollSize")
+  v-row.pl-5.mx-0.scroll-x.text-center(:style="scrollSize")
     vue-horizontal-list(
       :items="categories"
       :options="options"
     )
       template(v-slot:default="{item}")
-          v-chip.mx-auto.mr-0.rounded-xl.px-4(outlined :color="$vuetify.theme.themes.light.primary") {{item.name}}
+          v-chip.pl-2.rounded-xl.px-4.mr-20(
+            @click=""
+            outlined :color="$vuetify.theme.themes.light.primary"
+            selectable="true"
+            v-model="selectedCategories"
+            ) {{item.name}}
       //- .align-center
           //- v-card.mx-auto.pa-4.mb-1.category-card(
           //-   @click=""
@@ -50,7 +55,8 @@ export default {
           // Because: #app {padding: 80px 24px;}
           padding: 8
         }
-      }
+      },
+      selectedCategories: []
     }
   },
   computed: {
@@ -63,15 +69,15 @@ export default {
     ...mapActions({
       changeSelectedCategory: 'home/changeSelectedCategory'
     }),
-    cardColor (id) {
-      if (id % 3 === 1) {
-        return '#404348'
-      } else if (id % 3 === 2) {
-        return '#918679'
-      } else {
-        return '#FEB81E'
-      }
-    },
+    // cardColor () {
+    //   if (id % 3 === 1) {
+    //     return '#404348'
+    //   } else if (id % 3 === 2) {
+    //     return '#918679'
+    //   } else {
+    //     return '#FEB81E'
+    //   }
+    // },
     getName (name) {
       return name === 'IT' ? 'information technology' : name.toLowerCase()
     },
