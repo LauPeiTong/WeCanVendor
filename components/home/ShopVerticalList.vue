@@ -58,11 +58,27 @@
           //-       del dd
 
           //-     p.caption.darkGrey--text.font-weight-light.mb-0 Expired Date: {{item.expiredDate}}
+    //- v-row.pt-1.pb-2.lower-tile(dense :class="titleClass")
+    //-   v-col.text-center(:cols="2")
+    //-   v-col.text-center(:cols="8")
+    //-   v-col.text-center(:cols="2")
+    //-     v-btn(icon color="orange")
+    //-       v-icon {{ plusIcon }}
+
+    //- v-row.mb-2.ma-0(no-gutters)
+    //-   v-btn(icon color="orange")
+    //-     v-icon {{ plusIcon }}
+    //- v-btn(size="small" rounded)
+    //-   eva-icon.px-0.pt-0(name="plus-outline" :fill="$vuetify.theme.themes.light.primary" height="50" width="50")
+
+    //- v-btn(icon="mdi-plus-outline", size="small")
+        eva-icon(name="award" :fill="$vuetify.theme.themes.light.primary" height="50" width="50")
 
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { mdiPlus } from '@mdi/js'
 import WCard from '../componenets-custom/WCard.vue'
 
 export default {
@@ -94,7 +110,8 @@ export default {
   },
   data () {
     return {
-      cornerIconColor: '#FEB81E'
+      cornerIconColor: '#FEB81E',
+      plusIcon: mdiPlus
     }
   },
   computed: {
@@ -171,5 +188,23 @@ export default {
   font-size: 13px;
   height: 20px;
   max-width: 100px;
+}
+
+.v-btn.v-btn--icon.v-size--large {
+  padding: 0px !important;
+}
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Adjust the z-index value as needed */
+  }
+
+.lower-title {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-radius: 0px 0px 25px 25px;
+  z-index: 100;
 }
 </style>

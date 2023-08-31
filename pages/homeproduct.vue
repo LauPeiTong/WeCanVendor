@@ -9,11 +9,18 @@
     //- shops-list.pb-4
     //- item-list.pb-4
     shop-vertical-list.px-4.pb-4(:items="itemsvertical" :title="'Products'")
+  v-row.pt-8.pb-6.lower-tile(dense :class="titleClass")
+    v-col.text-center(:cols="2")
+    v-col.text-center(:cols="8")
+    v-col.text-center(:cols="2")
+      v-btn(icon color="white" style='background-color: orange; position: fixed; bottom: 120px; right: 20px;' v-on:click="redirectToPage")
+        v-icon {{ plusIcon }}
 
-</template>
+//- // </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { mdiPlus } from '@mdi/js'
 
 // import UpperTitle from '../components/UpperTitle.vue'
 import WSearchBar from '../components/componenets-custom/WSearchBar.vue'
@@ -37,7 +44,9 @@ export default {
   layout: 'default',
   data () {
     return {
-      search: null
+      search: null,
+      plusIcon: mdiPlus
+
     }
   },
   computed: {
@@ -51,16 +60,25 @@ export default {
   methods: {
     searchBy (newValue) {
       this.search = newValue
+    },
+    redirectToPage () {
+      this.$router.push('/addproduct')
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 :deep(.scroll) {
   overflow-x: hidden;
   overflow-y: auto;
   width: 100% !important;
 }
-
+.lower-title {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-radius: 0px 0px 25px 25px;
+  z-index: 100;
+}
 </style>

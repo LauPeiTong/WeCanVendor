@@ -15,6 +15,7 @@
             :fill="getButtonColor(menu.name)"
           )
         span.black--text.pt-1 {{menu.label}}
+
 </template>
 
 <script>

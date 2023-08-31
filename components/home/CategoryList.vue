@@ -11,7 +11,8 @@
       :options="options"
     )
       template(v-slot:default="{item}")
-          v-chip.pl-2.rounded-xl.px-4.mr-20(
+        v-layout.row-wrap
+          v-chip.mx-auto.pl-2.rounded-xl.px-4.mr-20(
             @click=""
             outlined :color="$vuetify.theme.themes.light.primary"
             selectable="true"
