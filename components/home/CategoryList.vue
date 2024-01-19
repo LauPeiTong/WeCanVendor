@@ -12,11 +12,10 @@
     )
       template(v-slot:default="{item}")
         v-layout.row-wrap
-          v-chip.mx-auto.pl-2.rounded-xl.px-4.mr-20(
+          v-chip.mx-auto.pl-2.rounded-xl.px-4(
             @click=""
             outlined :color="$vuetify.theme.themes.light.primary"
             selectable="true"
-            v-model="selectedCategories"
             ) {{item.name}}
       //- .align-center
           //- v-card.mx-auto.pa-4.mb-1.category-card(

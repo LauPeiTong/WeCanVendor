@@ -1,45 +1,32 @@
 <template lang="pug">
-.fill-height.home-page.pa-0.ma-0
+.fill-height.tracker-page.pa-0.ma-0
   v-row.pa-0.ma-0.upper-row
-    upper-title.ma-0(:icon="'heart'" :title-class="'dark-background'")
+    upper-title.ma-0(:title="'Food Tracker'" :icon="'more-vertical'")
     w-search-bar.ma-0(@change="searchBy")
-  .scroll.scrollbar-hide.ma-0.justify-top.align-center(:style="scrollSize")
-    category-list.pb-4.pt-6(:items="categories" :title="'Categories'")
-    //- ads-carousel.pt-4
-    //- shops-list.pb-4
-    //- item-list.pb-4
-    shop-vertical-list.px-4.pb-4(:items="itemsvertical" :title="'Products'")
-  v-row.pt-8.pb-6.lower-tile(dense :class="titleClass")
+  .scroll.ma-0.justify-top.align-center(:style="scrollSize")
+    food-list.pt-10.pb-2
+  v-row.pt-8.pb-6.lower-tile(dense)
     v-col.text-center(:cols="2")
     v-col.text-center(:cols="8")
     v-col.text-center(:cols="2")
       v-btn(icon color="white" style='background-color: orange; position: fixed; bottom: 120px; right: 20px;' v-on:click="redirectToPage")
         v-icon {{ plusIcon }}
-
-//- // </template>
+</template>
 
 <script>
 import { mapGetters } from 'vuex'
 import { mdiPlus } from '@mdi/js'
 
-// import UpperTitle from '../components/UpperTitle.vue'
-import WSearchBar from '../components/componenets-custom/WSearchBar.vue'
-// import AdsCarousel from '../components/home/AdsCarousel.vue'
-// import ShopsList from '../components/home/ShopsList.vue'
-// import ItemList from '../components/home/ItemList.vue'
-import CategoryList from '../components/home/CategoryList.vue'
-import ShopVerticalList from '../components/home/ShopVerticalList.vue'
+import UpperTitle from '../../components/UpperTitle.vue'
+import WSearchBar from '../../components/componenets-custom/WSearchBar.vue'
+import FoodList from '../../components/products/FoodList.vue'
 
 export default {
-  name: 'HomePage',
+  name: 'ProductsPage',
   components: {
-    // UpperTitle,
+    UpperTitle,
     WSearchBar,
-    // AdsCarousel,
-    // ShopsList,
-    // ItemList,
-    CategoryList,
-    ShopVerticalList
+    FoodList
   },
   layout: 'default',
   data () {

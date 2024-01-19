@@ -2,7 +2,6 @@
 .addproduct-page.pa-0.ma-0
   v-row.pa-0.ma-0.upper-row
       upper-title.ma-0(:title="'Add Product'" :title-class="'dark-background'" @goBack="goBackToHomePage" :back="true")
-      w-search-bar.ma-0(@change="searchBy")
   .scroll.ma-0.justify-top.align-center(:style="scrollSize")
     v-container.pa-4.pb-16
       v-form(ref="form")
@@ -10,10 +9,10 @@
 
         v-divider.mb-4(:thickness="5")
 
-        v-text-field.mt-4(:rules="rules" label="Product Name" placeholder = "Enter product name" filled counter="120" clearable)
+        v-text-field.mt-4(label="Product Name" placeholder = "Enter product name" filled counter="120" clearable)
           v-model="product name"
 
-        v-textarea.mt-4(:rules="rules" label="Product Description" placeholder = "Enter product name" filled counter="3000" clearable auto-grow)
+        v-textarea.mt-4(label="Product Description" placeholder = "Enter product name" filled counter="3000" clearable auto-grow)
           v-model="product description"
 
         v-divider.mt-4(:thickness="5")
@@ -23,12 +22,11 @@
 
         v-container.pl-0
             v-row.pa-0(justify = "center", align = "center")
-              v-col
+              v-col(cols="4")
                 v-text-field(suffix = "%" outlined )
-              v-col-1.pb-8.pr-2
-                .p
-                  | Until
-              v-col-2
+              v-col.pb-8(cols="2")
+                .p Until
+              v-col(cols="6")
                 v-dialog(ref="dialog"
                   v-model="modal"
                   :return-value.sync="date"

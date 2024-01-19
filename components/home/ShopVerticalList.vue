@@ -80,10 +80,12 @@
 import { mapGetters, mapActions } from 'vuex'
 import { mdiPlus } from '@mdi/js'
 import WCard from '../componenets-custom/WCard.vue'
+import WIcon from '../componenets-custom/WIcon.vue'
 
 export default {
   name: 'ShopVerticalList',
   components: {
+    WIcon,
     WCard
   },
   props: {

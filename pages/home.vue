@@ -5,9 +5,6 @@
     w-search-bar.ma-0(@change="searchBy")
   .scroll.scrollbar-hide.ma-0.justify-top.align-center(:style="scrollSize")
     category-list.pb-4.pt-6
-    ads-carousel.pt-4
-    shops-list.pb-4
-    item-list.pb-4
     shop-vertical-list.px-4.pb-4(:items="shops" :title="'Shops recommeded for you'")
 </template>
 
@@ -16,9 +13,6 @@ import { mapGetters } from 'vuex'
 
 import UpperTitle from '../components/UpperTitle.vue'
 import WSearchBar from '../components/componenets-custom/WSearchBar.vue'
-import AdsCarousel from '../components/home/AdsCarousel.vue'
-import ShopsList from '../components/home/ShopsList.vue'
-import ItemList from '../components/home/ItemList.vue'
 import CategoryList from '../components/home/CategoryList.vue'
 import ShopVerticalList from '../components/home/ShopVerticalList.vue'
 
@@ -27,9 +21,6 @@ export default {
   components: {
     UpperTitle,
     WSearchBar,
-    AdsCarousel,
-    ShopsList,
-    ItemList,
     CategoryList,
     ShopVerticalList
   },

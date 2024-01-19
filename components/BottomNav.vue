@@ -30,8 +30,8 @@ export default {
       menus: [
         {
           label: 'Products',
-          path: '/homeproduct',
-          name: 'homeproduct',
+          path: '/product',
+          name: 'product',
           icon: 'home-outline',
           iconFill: 'home'
         },
