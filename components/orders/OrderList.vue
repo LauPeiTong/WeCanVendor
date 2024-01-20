@@ -2,13 +2,13 @@
 .order-list.pt-2
   v-tabs.scroll-x(
     background-color="white"
+    v-model="activeTab"
     :color="$vuetify.theme.themes.light.primary"
     :style="scrollSize"
     grow
   )
-    v-tab(v-for="item in tabs" :key="item.name" @click="updateList(item.name)") {{item.name}}
-      v-badge.mb-2.ml-2(v-if="item.id === 1 && num > 0" color="red" :content="num")
-  item-list(:items="items")
+    v-tab(v-for="item in tabs" :key="item.id" @click="updateList(item.name)") {{item.name}}
+  item-list(:items="items" @updateOrder="updateOrderStatus")
 </template>
 
 <script>
@@ -26,12 +26,13 @@ export default {
   },
   data () {
     return {
+      activeTab: 0,
       orders: [],
       tabs: [
-        { id: 1, name: 'Pending' },
-        { id: 2, name: 'Processing' },
-        { id: 3, name: 'To Receive' },
-        { id: 4, name: 'Completed' },
+        { id: 0, name: 'Pending' },
+        { id: 1, name: 'Processing' },
+        { id: 2, name: 'To Receive' },
+        { id: 3, name: 'Completed' },
         { id: 4, name: 'Cancelled' }
       ],
       items: null,
@@ -45,9 +46,11 @@ export default {
   },
   async mounted () {
     try {
-      this.orders = await this.$axios.$get('/api/orders/')
+      this.orders = await this.$axios.$get('/api/orders/?total=true')
       console.log('Order list: ', this.orders)
-      this.updateList('Pending')
+      if (this.items == null) {
+        this.updateList('Pending')
+      }
     } catch (e) {
       console.log('Fail to get order list: ', e)
     }
@@ -56,7 +59,26 @@ export default {
     ...mapActions({
     }),
     updateList (status) {
+      this.activeTab = this.tabs.filter(i => i.name === status)[0].id
       this.items = this.orders[status]
+    },
+    async updateOrderStatus (payload) {
+      try {
+        const newOrder = { ...payload.selectedItem }
+        newOrder.status = payload.status
+        newOrder.vendor = payload.selectedItem.vendor.id
+        newOrder.customer = payload.selectedItem.customer.id
+
+        const response = await this.$axios.put(`/api/orders/${payload.selectedItem.id}/`, newOrder)
+        console.log('Order is updated: ', response)
+
+        this.orders = await this.$axios.$get('/api/orders/')
+        console.log('New order list: ', this.orders)
+
+        this.updateList(payload.status)
+      } catch (e) {
+        console.log('Fail to update order: ', e)
+      }
     }
   }
 }

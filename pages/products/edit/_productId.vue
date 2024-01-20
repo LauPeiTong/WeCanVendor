@@ -12,6 +12,7 @@
             prepend-icon="mdi-camera"
             v-model="image"
             rounded
+            dense
             hide-details="True"
             filled
           )
@@ -88,6 +89,7 @@
                 type="number"
                 hide-details="True"
                 rounded
+                dense
                 filled
               )
 
@@ -104,6 +106,7 @@
                 type="number"
                 hide-details="True"
                 rounded
+                dense
                 filled
               )
 
@@ -120,6 +123,7 @@
                 type="number"
                 hide-details="True"
                 rounded
+                dense
                 filled
               )
 
@@ -145,11 +149,13 @@
                     v-bind="attrs"
                     v-on="on"
                     rounded
+                    dense
                     filled
                   )
                 v-date-picker(
                   v-model="expiredDate"
                   scrollable
+                  color="primary"
                 )
                   v-btn(text color="primary" @click="modal = false")
                     |Cancel

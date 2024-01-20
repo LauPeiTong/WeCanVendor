@@ -45,10 +45,10 @@ export default {
     searchBy (newValue) {
       this.search = newValue
     },
-    async goToAddProductPage () {
+    goToAddProductPage () {
       this.$router.push('/products/new')
-      const response = await this.$axios.get('/api/donations')
-      console.log(response)
+      // const response = await this.$axios.get('/api/donations/?total=true')
+      // console.log(response)
     }
   }
 }
