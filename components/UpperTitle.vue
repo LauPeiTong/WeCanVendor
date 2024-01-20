@@ -4,7 +4,7 @@
       w-icon(
         v-if="back === true"
         :icon-name="'arrow-ios-back-outline'"
-        :icon-fill="'white'"
+        :icon-fill="iconColor"
         @click="emitBack()"
       )
     v-col.text-center(:cols="8")
@@ -14,6 +14,7 @@
         :icon-name="icon"
         :icon-fill="iconColor"
         :border="border"
+        v-if="false"
         @click=""
       )
 

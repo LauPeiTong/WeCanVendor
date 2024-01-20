@@ -1,5 +1,5 @@
 <template lang="pug">
-.activity-list.pt-2
+.order-list.pt-2
   v-tabs.scroll-x(
     background-color="white"
     :color="$vuetify.theme.themes.light.primary"
@@ -7,16 +7,17 @@
     grow
   )
     v-tab(v-for="item in tabs" :key="item.name" @click="updateList(item.name)") {{item.name}}
+      v-badge.mb-2.ml-2(v-if="item.id === 1 && num > 0" color="red" :content="num")
   item-list(:items="items")
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import WIcon from '../componenets-custom/WIcon.vue'
-import ItemList from './ItemList.vue'
+import ItemList from '../orders/ItemList.vue'
 
 export default {
-  name: 'FoodList',
+  name: 'OrderList',
   components: {
     WIcon,
     ItemList
@@ -25,36 +26,37 @@ export default {
   },
   data () {
     return {
-      food: null,
+      orders: [],
       tabs: [
-        { id: 1, name: 'Near Expiry' },
-        { id: 2, name: 'Within Shelf Life' },
-        { id: 3, name: 'Expired' }
+        { id: 1, name: 'Pending' },
+        { id: 2, name: 'Processing' },
+        { id: 3, name: 'To Receive' },
+        { id: 4, name: 'Completed' },
+        { id: 4, name: 'Cancelled' }
       ],
-      items: null
+      items: null,
+      num: 0
     }
   },
   computed: {
     ...mapGetters({
       scrollSize: 'screen/getScrollXClass'
-      // foods: 'food/getFoods'
     })
   },
   async mounted () {
     try {
-      this.food = await this.$axios.$get('/api/products/?status=true')
-      console.log('Food status data: ', this.food)
-
-      this.updateList('Near Expiry')
+      this.orders = await this.$axios.$get('/api/orders/')
+      console.log('Order list: ', this.orders)
+      this.updateList('Pending')
     } catch (e) {
-      console.log('Fail to get food items: ', e)
+      console.log('Fail to get order list: ', e)
     }
   },
   methods: {
     ...mapActions({
     }),
     updateList (status) {
-      this.items = this.food[status]
+      this.items = this.orders[status]
     }
   }
 }

@@ -7,9 +7,20 @@ export const getters = {
       height: `${window.innerHeight - 150}px`
     }
   },
+  getScrollTopClass (state) {
+    return {
+      height: `${window.innerHeight - 92}px`
+    }
+  },
   getScrollYClass (state) {
     return {
       height: `${window.innerHeight - 2}px`
+    }
+  },
+  getMessageClass (state) {
+    return {
+      height: `${window.innerHeight - 92}px`,
+      'min-width': `${window.innerWidth - 2}px`
     }
   },
   getScrollXClass (state) {

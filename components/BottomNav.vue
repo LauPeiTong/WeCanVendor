@@ -30,24 +30,24 @@ export default {
       menus: [
         {
           label: 'Products',
-          path: '/product',
-          name: 'product',
+          path: '/products',
+          name: 'products',
           icon: 'home-outline',
           iconFill: 'home'
         },
         {
-          label: 'Activity',
-          path: '/activity',
-          name: 'activity',
+          label: 'Order',
+          path: '/orders',
+          name: 'orders',
           icon: 'file-text-outline',
           iconFill: 'file-text'
         },
         {
-          label: 'Forum',
-          path: '/forum',
-          name: 'forum',
-          icon: 'globe-2-outline',
-          iconFill: 'globe-2'
+          label: 'Report',
+          path: '/report',
+          name: 'report',
+          icon: 'clipboard-outline',
+          iconFill: 'clipboard'
         },
         {
           label: 'Message',

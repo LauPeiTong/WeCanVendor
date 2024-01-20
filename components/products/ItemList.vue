@@ -9,21 +9,21 @@
           )
           v-row
             v-col.pr-0(:cols="4")
-              v-img.rounded-lg.ma-2(:src="require(`../../assets/food/noitem.png`)" width="90" height="90" v-if="item.product.image_url == '' || item.product.image_url == null")
-                v-badge.ml-1.mb-2(color="red" dot bordered v-if="item.product.status === 'Near Expiry'")
-              v-img.rounded-lg.ma-2(:src="item.product.image_url" width="90" height="90" v-else)
-                v-badge.ml-1.mb-2(color="red" dot bordered v-if="item.product.status === 'Near Expiry'")
-            v-col.py-2.d-flex.flex-column.px-0(:cols="8")
+              v-img.rounded-lg.ma-2(:src="require(`../../assets/food/noitem.png`)" width="90" height="90" v-if="item.image_url == '' || item.image_url == null")
+                v-badge.ml-1.mb-2(color="red" dot bordered v-if="item.status === 'Near Expiry'")
+              v-img.rounded-lg.ma-2(:src="item.image_url" width="90" height="90" v-else)
+                v-badge.ml-1.mb-2(color="red" dot bordered v-if="item.status === 'Near Expiry'")
+            v-col.pr-2.py-2.d-flex.flex-column.px-0(:cols="8")
               //- .d-flex.align-end.flex-wrap
-              span.secondary--text.font-weight-medium.mb-0.pt-4.pr-2 {{item.product.name + '  '}}
+              span.secondary--text.font-weight-medium.mb-0.pt-4.pr-2 {{item.name + '  '}}
                 |
-                span.mb-0.pt-4.darkGrey--text.caption x{{item.quantity}}
-              p.caption.darkGrey--text.font-weight-light.mb-4 Expired date: {{formatDate(new Date(item.product.expired_date))}}
+                span.mb-0.pt-4.success--text ({{item.quantity}} left)
+              p.caption.darkGrey--text.font-weight-light.mb-4 Expired date: {{formatDate(new Date(item.expired_date))}}
               v-row.d-flex.flex-row.mb-4.pl-2
-                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary" v-if="item.product.status === 'Near Expiry'") {{item.product.time_left.hours}} hours left
-                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.green" v-if="item.product.status === 'Within Shelf Life'") {{item.product.time_left.days}} days left
-                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.danger" v-if="item.product.status === 'Expired' && item.product.time_left.days < -1") Expired at {{item.product.time_left.days * -1}} days ago
-                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.danger" v-if="item.product.status === 'Expired' && item.product.time_left.days >= -1") Expired at {{item.product.time_left.hours * -1}} hours ago
+                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.primary" v-if="item.status === 'Near Expiry'") {{item.time_left.hours}} hours left
+                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.green" v-if="item.status === 'Within Shelf Life'") {{item.time_left.days}} days left
+                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.danger" v-if="item.status === 'Expired' && item.time_left.days < -1") Expired at {{item.time_left.days * -1}} days ago
+                v-chip.mt-auto.mr-2.rounded-xl(outlined :color="$vuetify.theme.themes.light.danger" v-if="item.status === 'Expired' && item.time_left.days >= -1") Expired at {{item.time_left.hours * -1}} hours ago
 </template>
 
 <script>
@@ -64,7 +64,7 @@ export default {
       return formattedDate
     },
     goToFoodDetailsPage (item) {
-      this.$router.push({ name: 'foodtracker-foodId', params: { foodId: item.product.id, food: item } })
+      this.$router.push({ name: 'products-productId', params: { productId: item.id, product: item } })
     }
   }
 }
