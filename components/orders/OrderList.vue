@@ -46,7 +46,7 @@ export default {
   },
   async mounted () {
     try {
-      this.orders = await this.$axios.$get('/api/orders/?total=true')
+      this.orders = await this.$axios.$get('/api/orders/summary/?status=true')
       console.log('Order list: ', this.orders)
       if (this.items == null) {
         this.updateList('Pending')
@@ -72,7 +72,7 @@ export default {
         const response = await this.$axios.put(`/api/orders/${payload.selectedItem.id}/`, newOrder)
         console.log('Order is updated: ', response)
 
-        this.orders = await this.$axios.$get('/api/orders/')
+        this.orders = await this.$axios.$get('/api/orders/summary/?status=true')
         console.log('New order list: ', this.orders)
 
         this.updateList(payload.status)

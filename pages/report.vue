@@ -57,7 +57,7 @@ export default {
   },
   async mounted () {
     try {
-      this.orders = await this.$axios.$get('/api/orders/?day=true&total=true')
+      this.orders = await this.$axios.$get('/api/orders/summary/?day=true&total=true&status=true')
       console.log('Order list: ', this.orders)
 
       this.donutChartItems = [
