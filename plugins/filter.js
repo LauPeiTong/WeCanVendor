@@ -1,4 +1,3 @@
-
 export default ({ app }, inject) => {
   inject('strLimit', function (value, size) {
     if (!value) { return '' }
