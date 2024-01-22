@@ -8,7 +8,7 @@
         v-card.rounded-lg.pa-2.text-center(outlined)
           .d-flex.align-center.justify-center
             v-icon.mb-1.mr-1(:color="$vuetify.theme.themes.light.success") mdi-clipboard-text
-            span.text-h6.success--text.font-weight-bold {{$formatCurrency(orders?.total_count)}}
+            span.text-h6.success--text.font-weight-bold {{orders?.total_count}}
           p.mb-0.font-weight-regular Total Order
       v-col(cols="6")
         v-card.rounded-lg.pa-2.text-center(outlined)
