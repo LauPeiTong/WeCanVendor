@@ -175,7 +175,7 @@
         )
       v-col(class="text-center" cols="6")
         w-button.bottom-nav--button(
-          :label="'Add Item'"
+          :label="'Edit Item'"
           block
           dark
           :color="$vuetify.theme.themes.light.primary"
