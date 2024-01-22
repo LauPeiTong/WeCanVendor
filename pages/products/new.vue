@@ -21,7 +21,7 @@
 
           p.mb-0.font-weight-medium Product Name
           v-text-field.filled-field(
-            label="Exp: Sushi"
+            :label="surpriseBox.length > 0 ? 'Surprise Box' : 'Exp: Sushi'"
             placeholder = "Enter product name"
             filled
             rounded
@@ -29,9 +29,15 @@
             counter="120"
             clearable
             v-model="name"
+            :disabled="surpriseBox.length > 0"
+          )
+          v-checkbox.mt-0.mb-0(
+            v-model="surpriseBox"
+            label="Make it as Surprise Box?"
+            value="Surprise Box"
           )
 
-          v-divider.my-4
+          v-divider.mb-4
 
           p.mb-0.font-weight-medium Category
           v-text-field.filled-field(
@@ -206,7 +212,8 @@ export default {
     nutrients: '',
     description: '',
     discount: 0,
-    quantity: 0
+    quantity: 0,
+    surpriseBox: []
   }),
   computed: {
     ...mapGetters({
@@ -220,8 +227,8 @@ export default {
     async addItem () {
       const newProductData = {
         vendor: this.$store.getters['auth/getAuthId'], // Replace with the actual user ID
-        name: this.name,
-        image_url: this.image_url,
+        name: this.surpriseBox.length > 0 ? 'Surprise Box' : this.name,
+        image_url: this.surpriseBox.length > 0 ? '' : this.image_url,
         description: this.description,
         category: this.category,
         original_price: this.price,
@@ -273,6 +280,16 @@ export default {
 
 :deep(.v-input__icon .v-icon) {
   color: #FAAF08 !important;
+}
+
+:deep(.v-input--is-disabled .v-input__slot) {
+  background-color: transparent !important;
+  color: #FAAF08;
+  border: solid 2px #FAAF08;
+}
+
+:deep(.v-input--is-disabled .v-label--is-disabled) {
+  color: #FAAF08;
 }
 
 .v-footer {
