@@ -53,8 +53,16 @@
         )
         v-text-field(
           label="Address"
-          placeholder="Petaling Jaya"
+          placeholder="Kepong Baru"
           v-model="address"
+          filled
+          rounded
+          dense
+        )
+        v-text-field(
+          label="City"
+          placeholder="Kepong"
+          v-model="city"
           filled
           rounded
           dense
@@ -85,6 +93,7 @@ export default {
       password: null,
       confirmPassword: null,
       address: null,
+      city: null,
       passwordErrorMessages: [],
       confirmPasswordErrorMessages: [],
       rules: {
@@ -116,7 +125,8 @@ export default {
           password: this.confirmPassword,
           role: 'V',
           display_name: this.shopname,
-          address: this.address
+          address: this.address,
+          city: this.city
         })
 
         const user = {
@@ -127,6 +137,7 @@ export default {
           phone: '',
           address: response.data.customer_data.address,
           points: 0,
+          city: '',
           imageUrl: ''
         }
 
@@ -136,7 +147,7 @@ export default {
         this.storeTokenInLocalStorage(user.token)
 
         console.log('Register successful', user)
-        this.$router.push({ path: '/home' })
+        this.$router.push({ path: '/products' })
       } catch (error) {
         if (error.response && error.response.data && error.response.data.errors) {
           // If the server responds with error messages
